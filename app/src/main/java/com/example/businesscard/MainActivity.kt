@@ -51,13 +51,13 @@ fun BusinessCard(
     modifier: Modifier = Modifier
 ) {
     Surface(
-        modifier = modifier // Light green background
+        modifier = modifier
             .fillMaxSize(),
         color = Color(0xFFD0F0C0) // Light green background
     ) {
         Column(
             modifier = Modifier
-                .padding(8.dp) // Reduced padding
+                .padding(8.dp)
                 .fillMaxHeight(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
@@ -68,17 +68,33 @@ fun BusinessCard(
                 contentDescription = null,
                 modifier = Modifier
                     .size(64.dp)
-                    .padding(bottom = 8.dp) // Reduced padding
-                    .background(color = Color(0xFF00008B)) // Light green background
+                    .padding(bottom = 8.dp)
+                    .background(color = Color(0xFF00008B)) // Dark blue background
             )
             Text(text = name, style = MaterialTheme.typography.headlineMedium)
             Text(text = title, style = MaterialTheme.typography.titleMedium)
             Spacer(modifier = Modifier.weight(1f)) // Pushes the contact info to the bottom
-            Text(text = phone, style = MaterialTheme.typography.bodyMedium)
-            Text(text = email, style = MaterialTheme.typography.bodyMedium)
-            Text(text = website, style = MaterialTheme.typography.bodyMedium)
+            ContactInfoRow(iconResId = R.drawable.ring_phone, text = phone)
+            ContactInfoRow(iconResId = R.drawable.nuevo_correo_electronico, text = email)
+            ContactInfoRow(iconResId = R.drawable.sitio, text = website)
             Spacer(modifier = Modifier.weight(0.1f)) // Pushes the contact info to the bottom
         }
+    }
+}
+
+@Composable
+fun ContactInfoRow(iconResId: Int, text: String) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.padding(vertical = 4.dp)
+    ) {
+        Image(
+            painter = painterResource(id = iconResId),
+            contentDescription = null,
+            modifier = Modifier.size(24.dp)
+        )
+        Spacer(modifier = Modifier.width(8.dp))
+        Text(text = text, style = MaterialTheme.typography.bodyMedium)
     }
 }
 
