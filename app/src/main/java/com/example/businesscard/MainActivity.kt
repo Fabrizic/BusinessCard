@@ -30,9 +30,10 @@ class MainActivity : ComponentActivity() {
                         title = "Software Engineer",
                         phone = "961-256-056",
                         email = "fabrizio.leiva@unmsm.edu.pe",
-                        website = "@IamFabrizic",
+                        website = "@Fabrizic",
                         logoResId = R.drawable.android_logo, // Replace with your actual logo resource ID
-                        modifier = Modifier.padding(innerPadding)
+                        nameColor = Color.DarkGray, // Custom color for name
+                        titleColor = Color.Red // Custom color for title
                     )
                 }
             }
@@ -48,6 +49,8 @@ fun BusinessCard(
     email: String,
     website: String,
     logoResId: Int,
+    nameColor: Color = Color.Black, // Default color for name
+    titleColor: Color = Color.Gray, // Default color for title
     modifier: Modifier = Modifier
 ) {
     Surface(
@@ -62,22 +65,22 @@ fun BusinessCard(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Spacer(modifier = Modifier.weight(1f)) // Pushes the contact info to the bottom
+            Spacer(modifier = Modifier.weight(1f))
             Image(
                 painter = painterResource(id = logoResId),
                 contentDescription = null,
                 modifier = Modifier
                     .size(64.dp)
                     .padding(bottom = 8.dp)
-                    .background(color = Color(0xFF00008B)) // Dark blue background
+                    .background(color = Color(0xFF233FBC))
             )
-            Text(text = name, style = MaterialTheme.typography.headlineMedium)
-            Text(text = title, style = MaterialTheme.typography.titleMedium)
-            Spacer(modifier = Modifier.weight(1f)) // Pushes the contact info to the bottom
+            Text(text = name, color = nameColor, style = MaterialTheme.typography.headlineMedium)
+            Text(text = title, color = titleColor, style = MaterialTheme.typography.titleMedium)
+            Spacer(modifier = Modifier.weight(1f))
             ContactInfoRow(iconResId = R.drawable.ring_phone, text = phone)
             ContactInfoRow(iconResId = R.drawable.nuevo_correo_electronico, text = email)
             ContactInfoRow(iconResId = R.drawable.sitio, text = website)
-            Spacer(modifier = Modifier.weight(0.1f)) // Pushes the contact info to the bottom
+            Spacer(modifier = Modifier.weight(0.1f))
         }
     }
 }
@@ -107,8 +110,10 @@ fun BusinessCardPreview() {
             title = "Software Engineer",
             phone = "961-256-056",
             email = "fabrizio.leiva@unmsm.edu.pe",
-            website = "@IamFabrizic",
-            logoResId = R.drawable.android_logo // Replace with your actual logo resource ID
+            website = "@Fabrizic",
+            logoResId = R.drawable.android_logo, // Replace with your actual logo resource ID
+            nameColor = Color.DarkGray, // Custom color for name
+            titleColor = Color.Red // Custom color for title
         )
     }
 }
